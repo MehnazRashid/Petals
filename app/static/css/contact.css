@@ -1,0 +1,117 @@
+.contactfix {
+    position: relative;
+    width: 58%;
+    height: 80vh;
+    margin-top: 2vh;
+    box-sizing: border-box;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    margin-bottom: 2rem; 
+}
+.contacta{
+    
+    width: 45%;
+    height: 75vh;
+    box-sizing: border-box;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    margin-bottom: 2rem; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    text-align: center;
+}
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+     .footericoni {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 4rem;
+        
+    }
+    .footericoni a:hover{
+       font-size: 1.8rem;
+    color: #1a237e;
+    }
+
+    .footericoni a {
+   
+    font-size: 1.8rem;
+    color: black;
+}
+
+.contact-form {
+
+    width: 30rem;
+    height: 88vh;
+    box-sizing: border-box;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    margin-bottom: 2rem; 
+}
+
+.contact-entire {
+    height: 75vh;
+    width: 30rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-label {
+    display: block;
+    padding-bottom: 0.5rem;
+}
+
+.contact-formitem {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.contact-input {
+    width: 100%;
+}
+
+.contact-button {
+    margin-top: 0.5rem;
+    background-color: white;
+    border: none;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #f2f2f2;
+    box-shadow: white 0px 0.5px 2px;
+}
+
+.contact-textarea {
+    resize: none;
+    padding: 0.2rem;
+}

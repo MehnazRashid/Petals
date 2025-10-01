@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="blogblogsection">
+        <div class="blogOURBLOGS">Our Blogs</div>
+        
+        {% for blog in blog_posts %}
+            <div class="blogoneblog">
+                <div class="blogblogleft">
+                    <div class="blogtitle">{{ blog.title }}</div>
+                    <div class="blogtxt">{{ blog.blogtext|truncate(200) }}</div>
+                    <div class="blogmore">
+                        <a href="{{ url_for('blog', id=blog.id) }}">Show More</a>
+                    </div>
+                </div>
+                <div class="blogblogright">
+                    {% if blog.image_url %}
+                        <img src="{{ url_for('static', filename='uploads/' ~ blog.image_url) }}" alt="Blog Image">
+                    {% else %}
+                        <h1>🌷</h1>
+                    {% endif %}
+                </div>
+            </div> <br>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

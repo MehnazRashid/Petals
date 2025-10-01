@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="loginpage">
+        <br> <div class="welcometext"><span>S I G N &nbsp; &nbsp;U P</span></div>
+
+        {% if userexists %}
+            <p class="subtext error" style="color:red;">
+                Email already exists
+            </p>
+        {% endif %}
+
+        <form action="{{ url_for('register') }}" method="post">
+            <div class="formm">
+                <div class="jinishpotro">
+                    <label for="firstname">First Name:</label><br>
+                    <input type="text" id="firstname" name="firstname" required><br><br>
+                    
+                    <label for="lastname">Last Name:</label><br>
+                    <input type="text" id="lastname" name="lastname" required><br><br>
+
+                    <label for="email">Email address:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                    
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" required><br><br>
+                    
+                    <label for="cpassword">Confirm Password:</label><br>
+                    <input type="password" id="cpassword" name="cpassword" required>
+                </div>
+                <div class="login"><button type="submit" class="loginbutton">Submit</button></div>
+            </div>
+        </form>
+        <div class="loginetc">
+            Already have an account? Sign in <a href="{{ url_for('login') }}">here</a>.<br><br><br>
+        </div>
+    </div>
+
+    <script>
+        const password = document.querySelector('#password');
+        const cpassword = document.querySelector('#cpassword');
+
+        function passwordChange() {
+            const pass_value = password.value;
+            const cpass_value = cpassword.value;
+
+            if (pass_value === cpass_value) {
+                cpassword.setCustomValidity('');
+            } else {
+                cpassword.setCustomValidity("Passwords do not match.");
+            }
+        }
+
+        password.addEventListener('change', passwordChange);
+        cpassword.addEventListener('change', passwordChange);
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="cart">
+    <p class="index-heading">Checkout</p>
+    <h3 class="checkoutheading">Your Order</h3>
+    <div class="cartt">
+         
+        <div class="cartitems">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set ns = namespace(grand_total=0) %}
+                    {% for item in cart_items %}
+                    {% set row_total = item.flower.price | float * item.quantity %}
+                    {% set ns.grand_total = ns.grand_total + row_total %}
+                    <tr>
+                        <td>{{ item.flower.name }}</td>
+                        <td>{{ item.flower.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ row_total }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4">Your cart is empty.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+              </div>
+              <div class="checkoutfixx">
+            <div class="total-pricecheckout">Total Price: &nbsp <span class="bold">{{ ns.grand_total }}</span>&nbsp Tk</div>
+              </div>
+       
+         <div class="checkout-form">
+            <h3 class="checkoutheading">Shipping Information</h3> <br> 
+            <form method="POST" action="{{ url_for('place_order') }}" class="checkout-form-actual">
+                <div class="checkoutdiv">
+                    <div class="form-group"><br><br>
+                    <label for="phone"  class="contact-label">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address"  class="contact-label" >Address:</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <button type="submit" class="finalbtn">Place Order</button> <br>
+                </div>
+            </form>
+       
+       </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock title %} 🌷 𝒫𝑒𝓉𝒶𝓁𝓈 🌷</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/nav.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/carousels.css')}}"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .modal-entire {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            margin-left: 9vw;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(2px);
+            box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+            min-height: 300px;
+            height: auto;
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            color: #f7fdfa;
+            font-size: 16px;
+            font-weight: 400;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .modal-header {
+            border-bottom: none;
+            text-align: center;
+            justify-content: center;
+        }
+        .modal-title {
+            margin-top: 15px;
+            letter-spacing: 2.5px;
+            font-size: 21px;
+            font-weight: 500;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+        }
+        .modal-body button {
+            padding: 2px 65px;
+            background-color: white;
+            border: none;
+            font-family: 'Times New Roman', serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: black;
+            border-radius: 2px;
+        }
+        .modal-body button:hover {
+            cursor: pointer;
+            background-color: black;
+            color: white;
+        }
+        .error-message {
+            color: red;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+        .modal-footer a {
+            color: #e3e3e3;
+            font-weight: bold;
+            margin-top: 2vh;
+        }
+        .modal-footer a:hover {
+            text-decoration: underline;
+            color: white;
+        }
+
+  
+.login-dialog {
+    margin-top: 1.5rem;  
+}
+
+      
+    </style>
+</head>
+<body class="specific">
+    <div class="nav specific">
+        <div class="nav1 specific"><span>PETALS</span></div>
+        <div class="nav2 specific">    
+            <div class="nav21 specific">
+                <div class="item specific">
+                    <div class="dropdown specific">
+                        <button type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="specific">
+                            <div id="btnfix" class="specific">Occasions</div>
+                        </button>
+                        <div class="dropdown-menu specific" aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item specific" href="{{url_for('products', category='birthday')}}">Birthday</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='anniversary')}}">Anniversary</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='friendship day')}}">Friendship Day</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='wedding')}}">Wedding</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='graduation')}}">Graduation</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item specific">
+                    <div class="dropdown specific">
+                        <button type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="specific">
+                            <div id="btnfix" class="specific">Flowers</div>
+                        </button>
+                        <div class="dropdown-menu specific" aria-labelledby="dropdownMenuButton2">
+                            <a class="dropdown-item specific" href="{{url_for('products', category='rose')}}">Rose</a> 
+                            <a class="dropdown-item specific" href="{{url_for('products', category='lily')}}">Lily</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='orchid')}}">Orchid</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='tulip')}}">Tulip</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item specific">
+                    <div class="dropdown specific">
+                        <button type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="specific">
+                            <div id="btnfix" class="specific">Color</div>
+                        </button>
+                        <div class="dropdown-menu specific" aria-labelledby="dropdownMenuButton3">
+                            <a class="dropdown-item specific" href="{{url_for('products', category='red')}}">Red</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='orange')}}">Orange</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='yellow')}}">Yellow</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='pink')}}">Pink</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='purple')}}">Purple</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='black')}}">Black</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='white')}}">White</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item specific">
+                    <div class="dropdown specific">
+                        <button type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="specific">
+                            <div id="btnfix" class="specific">Arrangement</div>
+                        </button>
+                        <div class="dropdown-menu specific" aria-labelledby="dropdownMenuButton4">
+                            <a class="dropdown-item specific" href="{{url_for('products', category='bouquets')}}">Bouquets</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='vase arrangements')}}">Vase Arrangements</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='floral basket')}}">Floral Basket</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='flowerboxes')}}">Flower Boxes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item specific">
+                    <div class="dropdown specific">
+                        <button type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="specific">
+                            <div id="btnfix" class="specific">Symbolism</div>
+                        </button>
+                        <div class="dropdown-menu specific" aria-labelledby="dropdownMenuButton5">
+                            <a class="dropdown-item specific" href="{{url_for('products', category='love')}}">Love</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='friendship')}}">Friendship</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='gratitude')}}">Gratitude</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='sympathy')}}">Sympathy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item specific">
+                    <div class="dropdown specific">
+                        <button type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="specific">
+                            <div id="btnfix" class="specific">Plants</div>
+                        </button>
+                        <div class="dropdown-menu specific" aria-labelledby="dropdownMenuButton5">
+                            <a class="dropdown-item specific" href="{{url_for('products', category='indoor')}}">Indoor</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='outdoor')}}">Outdoor</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='succulents and cacti')}}">Succulents and Cacti</a>
+                            <a class="dropdown-item specific" href="{{url_for('products', category='herbs')}}">Herbs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav22 specific">
+                <div class="nav221 specific">
+                    <div class="item1 specific"><a href="/" class="specific">Home</a></div>
+                    {% if current_user.is_authenticated %}
+                        <a href="/logout" class="specific">Logout</a>
+                    {% else %}
+                        <div class="item1 specific">
+                            <a href="#" data-toggle="modal" data-target="#registerModal" class="specific">Signup</a> | 
+                            <a href="#" data-toggle="modal" data-target="#loginModal" class="specific">Login</a>
+                        </div>
+                    {% endif %}
+                    <div class="item1 specific"><a href="/about" class="specific">About us</a></div>
+                    <div class="item1 specific"><a href="{{url_for('blogs')}}" class="specific">Our Blog</a></div>
+                    <div class="item1 specific"><a href="/contact" class="specific">Contact us</a></div>
+                </div>
+                <div class="nav222 specific">
+                    <form method="POST" action="{{url_for('search')}}">
+                        <div class="item2 specific">
+                            <input type="text" name="searchbar" placeholder="&nbsp; Search.." class="fix specific">
+                            <button class="btn specific"><i class="fas fa-search specific"></i></button>
+                        </div>
+                    </form>
+                    <div class="item2 specific">
+                        <button class="btn specific">
+                            {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('wishlist') }}">
+                                    <i class="fas fa-heart specific"></i>
+                                </a>
+                            {% else %}
+                                <a href="#" data-toggle="modal" data-target="#loginModal">
+                                    <i class="fas fa-heart specific"></i>
+                                </a>
+                            {% endif %}
+                        </button>
+                    </div>
+                    <div class="item2 specific">
+                        <button class="btn specific">
+                            {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('cart') }}">
+                                    <i class="fas fa-shopping-cart specific"></i>
+                                </a>
+                            {% else %}
+                                <a href="#" data-toggle="modal" data-target="#loginModal">
+                                    <i class="fas fa-shopping-cart specific"></i>
+                                </a>
+                            {% endif %}
+                        </button>
+                    </div>
+                    <div class="item2 specific">
+                        {% if current_user.is_authenticated %}
+                            <a href="{{url_for('profile')}}">
+                                <button class="btn specific"><i class="fas fa-user specific"></i></button>
+                            </a>
+                        {% else %}
+                            <a href="#" data-toggle="modal" data-target="#loginModal">
+                                <button class="btn specific"><i class="fas fa-user specific"></i></button>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered login-dialog"  role="document">
+            <div class="modal-content login-dialog">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">W E L C O M E</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% if request.args.get('invalid') %}
+                        <div class="error-message">Incorrect Email or Password!</div>
+                    {% endif %}
+                    <form action="{{url_for('login', next=request.args.get('next'))}}" method="post">
+                        <div class="form-group">
+                            <label for="loginEmail">Email:</label>
+                            <input type="email" id="loginEmail" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password:</label>
+                            <input type="password" id="loginPassword" name="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p>Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">S I G N &nbsp; U P</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% if request.args.get('userexists') %}
+                        <div class="error-message">Email already exists</div>
+                    {% endif %}
+                    {% if request.args.get('passwordmismatch') %}
+                        <div class="error-message">Passwords do not match</div>
+                    {% endif %}
+                    <form action="{{url_for('register')}}" method="post">
+                        <div class="form-group">
+                            <label for="firstname">First Name:</label>
+                            <input type="text" id="firstname" name="firstname" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name:</label>
+                            <input type="text" id="lastname" name="lastname" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email address:</label>
+                            <input type="email" id="registerEmail" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password:</label>
+                            <input type="password" id="registerPassword" name="password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cpassword">Confirm Password:</label>
+                            <input type="password" id="cpassword" name="cpassword" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p>Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block main %}
+    {% endblock main %}
+
+    <footer>
+        <div class="footerdiv">
+            <div class="left">
+                <div class="title">About Us</div>
+                <p>Welcome to Petals, where we celebrate the beauty of nature with every bloom. Our flower shop is dedicated to bringing you the freshest and most exquisite flowers, carefully selected to brighten your day and elevate any occasion.</p>
+                <div><strong>Mobile No.:</strong> <span class="gray-text">+240644309736</span></div>
+                <div><strong>E-mail address:</strong> <span class="gray-text">mypetals@gmail.com</span></div>
+                <div><a href="#" data-toggle="modal" data-target="#registerModal" class="footer-link">Sign up/Login</a></div>
+                <div><a href="{{url_for('blogs')}}" class="footer-link">Our Blogs</a></div>
+            </div>
+            <div class="right">
+                <div class="title">Subscribe to Our Newsletter:</div><br>
+                <div>
+                    <form action="{{ url_for('subscribe') }}" method="post">
+                        <input type="email" class="email-input" name="email" placeholder=" Enter your email" >
+                        <button type="submit" id="footer2">Subscribe</button>
+                    </form>
+                </div>
+                <div>
+                    <div class="footericon">
+                        <a href="{{ url_for('no_socialmedia') }}"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{ url_for('no_socialmedia') }}"><i class="fab fa-twitter"></i></a>
+                        <a href="{{ url_for('no_socialmedia') }}"><i class="fab fa-instagram"></i></a>
+                        <a href="{{ url_for('no_socialmedia') }}"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+        const password = document.querySelector('#registerPassword');
+        const cpassword = document.querySelector('#cpassword');
+
+        function passwordChange() {
+            const pass_value = password.value;
+            const cpass_value = cpassword.value;
+            if (pass_value === cpass_value) {
+                cpassword.setCustomValidity('');
+            } else {
+                cpassword.setCustomValidity("Passwords do not match.");
+            }
+        }
+
+        password.addEventListener('change', passwordChange);
+        cpassword.addEventListener('change', passwordChange);
+
+        
+        $(document).ready(function() {
+            
+            function showModal(modalId, conditions) {
+                if (conditions) {
+                    var modal = $(modalId);
+                    modal.modal('hide'); 
+                    setTimeout(function() {
+                        modal.modal('show');
+                    }, 100); 
+                }
+            }
+
+            showModal('#loginModal', {% if request.args.get('show_login') or request.args.get('invalid') %}true{% else %}false{% endif %});
+            showModal('#registerModal', {% if request.args.get('show_register') or request.args.get('userexists') or request.args.get('passwordmismatch') %}true{% else %}false{% endif %});
+
+          
+            $('.close, .modal-header button').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(this).closest('.modal').modal('hide');
+            });
+        });
+    </script>
+</body>
+</html>

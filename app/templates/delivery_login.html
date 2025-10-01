@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="thedelivery">
+    <p class="index-heading">Delivery Login</h2>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    <div class="delivery_form">
+        <form method="POST">
+            <div class="delivery_username">
+                <label for="username" class="delivery_label">Username:</label>
+                <input type="text" id="username" name="username" id="deliveryfontfix" required>
+            </div>
+
+            <div>
+                <label for="password" class="delivery_label">Password:</label>
+                <input type="password" id="password" name="password" class="delivery_password" id="deliveryfontfix" required>
+            </div>
+
+            <div class="submit_incenter">
+                <button type="submit" id="seriously" class="lastrdiker_buttonsgula2">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

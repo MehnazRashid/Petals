@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<p class="indexheading">
+    Shop our best flowers   
+</p>
+
+<div class="cards">
+
+    <div class="card" style="background-image: url('{{url_for('static', filename='images/Rose.jfif')}}');" onclick="this.querySelector('a').click()">
+      <div class="cardtext"><a href="{{url_for('products', category='Rose')}}">Shop Roses</a></div>  
+    </div>
+    <div class="card" style="background-image: url('{{url_for('static', filename='images/Orchid.png')}}');" onclick="this.querySelector('a').click()">
+        <div class="cardtext"> <a href="{{url_for('products', category='Orchid')}}">Shop Orchid</a></div>
+    </div>
+    <div class="card" style="background-image: url('{{url_for('static', filename='images/Lily.png')}}');" onclick="this.querySelector('a').click()">
+        <div class="cardtext"><a href="{{url_for('products', category='lily')}}">Shop Lily</a></div>
+    </div>
+    <div class="card" style="background-image: url('{{url_for('static', filename='images/Tulip.png')}}');" onclick="this.querySelector('a').click()">
+        <div class="cardtext"> <a href="{{url_for('products', category='Tulip')}}">Shop Tulips</a></div>
+    </div>
+
+</div>
+
+{% include 'carousels.html' %}
+
+{% endblock %}

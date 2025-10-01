@@ -1,0 +1,99 @@
+<div id="section1" class="carousel slide" data-bs-ride="carousel">
+    <div class="sectioncall">
+       <p class="index-heading">Fresh Roses</p>
+    </div>
+    <div class="carousel-indicators" id="testing">
+       <button type="button" data-bs-target="#section1" data-bs-slide-to="0" class="active"></button>
+       <button type="button" data-bs-target="#section1" data-bs-slide-to="1"></button>
+       <button type="button" data-bs-target="#section1" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner text-center">
+       <div class="carousel-item active">
+          <img src="{{url_for('static', filename='images/Rose.jfif')}}" class="flowerimg ">
+       </div>
+       <div class="carousel-item">
+          <img src="{{url_for('static', filename='images/Rose-1.jpg')}}" class="flowerimg">
+       </div>
+       <div class="carousel-item">
+          <img src="{{url_for('static', filename='images/Rose-2.jpg')}}" class="flowerimg">
+       </div>
+    </div>
+    <div class="buttonloadmore">
+      <a href="{{url_for('products', category='rose')}}">  <button class="btn" id="loadmorebtn">Shop more products</button></a> 
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#section1" data-bs-slide="prev">
+   <img src="https://www.dropbox.com/scl/fi/yu0moh60zdchubfwv7w04/download-removebg-preview.png?rlkey=avr06ge7zdqckpcbtrmgk86tm&raw=1" alt="" width="30px" id="arrows" > 
+   </button>
+   <button class="carousel-control-next" type="button" data-bs-target="#section1" data-bs-slide="next">
+   <img src="https://www.dropbox.com/scl/fi/8jit3evrmo54hieti68oa/download__1_-removebg-preview.png?rlkey=lo2m5112xc9bn1naxdgaom0fy&raw=1" alt="" width="30px"  id="arrows">
+   </button>
+</div>
+<div id="section2" class="carousel slide" data-bs-ride="carousel">
+   <div class="sectioncall">
+      <p class="index-heading">Vase Arrangements</p>
+   </div>
+   <div class="carousel-indicators" id="testing">
+      <button type="button" data-bs-target="#section2" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#section2" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#section2" data-bs-slide-to="2"></button>
+   </div>
+   <div class="carousel-inner text-center">
+      <div class="carousel-item active">
+         <img src="{{url_for('static', filename='images/V.png')}}" class="flowerimg ">
+      </div>
+      <div class="carousel-item">
+         <img src="{{url_for('static', filename='images/V1.png')}}"  class="flowerimg">
+      </div>
+      <div class="carousel-item">
+         <img src="{{url_for('static', filename='images/81.png')}}"  class="flowerimg">
+      </div>
+   </div>
+   <div class="buttonloadmore">
+      <a href="{{url_for('products', category='vase arrangements')}}">  <button class="btn" id="loadmorebtn">Shop more products</button></a> 
+   </div>
+   <button class="carousel-control-prev" type="button" data-bs-target="#section2" data-bs-slide="prev">
+   <img src="https://www.dropbox.com/scl/fi/yu0moh60zdchubfwv7w04/download-removebg-preview.png?rlkey=avr06ge7zdqckpcbtrmgk86tm&raw=1" alt="" width="30px" id="arrows" > 
+   </button>
+   <button class="carousel-control-next" type="button" data-bs-target="#section2" data-bs-slide="next">
+   <img src="https://www.dropbox.com/scl/fi/8jit3evrmo54hieti68oa/download__1_-removebg-preview.png?rlkey=lo2m5112xc9bn1naxdgaom0fy&raw=1" alt="" width="30px"  id="arrows">
+   </button>
+</div>
+<div id="section3" class="carousel slide" data-bs-ride="carousel">
+   <div class="sectioncall">
+      <p class="index-heading">Wedding Blooms</p>
+   </div>
+   <div class="carousel-indicators" id="testing">
+      <button type="button" data-bs-target="#section3" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#section3" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#section3" data-bs-slide-to="2"></button>
+   </div>
+   <div class="carousel-inner text-center">
+      <div class="carousel-item active">
+         <img src="{{url_for('static', filename='images/Lily.png')}}" class="flowerimg ">
+      </div>
+      <div class="carousel-item">
+         <img src="{{url_for('static', filename='images/Tulip.png')}}" class="flowerimg">
+      </div>
+      <div class="carousel-item">
+         <img src="{{url_for('static', filename='images/Rose.jfif')}}" class="flowerimg">
+      </div>
+   </div>
+   <div class="buttonloadmore">
+      <a href="{{url_for('products', category='wedding')}}">  <button class="btn" id="loadmorebtn">Shop more products</button></a> 
+   </div>
+   <button class="carousel-control-prev" type="button" data-bs-target="#section3" data-bs-slide="prev">
+   <img src="https://www.dropbox.com/scl/fi/yu0moh60zdchubfwv7w04/download-removebg-preview.png?rlkey=avr06ge7zdqckpcbtrmgk86tm&raw=1" alt="" width="30px" id="arrows" > 
+   </button>
+   <button class="carousel-control-next" type="button" data-bs-target="#section3" data-bs-slide="next">
+   <img src="https://www.dropbox.com/scl/fi/8jit3evrmo54hieti68oa/download__1_-removebg-preview.png?rlkey=lo2m5112xc9bn1naxdgaom0fy&raw=1" alt="" width="30px"  id="arrows">
+   </button>
+</div>
+  <script>
+      var carousels = document.querySelectorAll('.carousel');
+      carousels.forEach(function(carousel) {
+          new bootstrap.Carousel(carousel);
+      });
+  </script>
+  
+
+

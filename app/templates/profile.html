@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="cart">
+    <p class="index-heading">Ongoing Orders</p>
+    {% set ongoing_orders = orders | selectattr('status', 'in', ['Processing', 'Shipped']) | list %}
+    {% if ongoing_orders %}
+    <div class="cartt">
+    <div class="cartitems">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date and Time</th>
+                    <th>Items</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th>Shipping Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in ongoing_orders %}
+                {% set total_price = namespace(sum=0) %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.date_created.strftime('%#d %b %Y %I.%M %p').replace('AM', 'am').replace('PM', 'pm') }}</td>
+                    <td>
+                        {% for item in order.items %}
+                            {% set item_total = (item.price | float) * item.quantity %}
+                            {% set total_price.sum = total_price.sum + item_total %}
+                            {{ item.flower.name }} × {{ item.quantity }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>{{ total_price.sum }} Tk</td>
+                    <td>{{ order.status }}</td>
+                    <td>
+                        <p>Phone: {{ order.phone }}</p>
+                        <p>Address: {{ order.address }}</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    {% else %}
+    <p class="ongoingwow">You have no ongoing orders.</p>
+    {% endif %}
+
+    <p class="index-heading">Delivered Orders</p>
+    {% set delivered_orders = orders | selectattr('status', 'equalto', 'Delivered') | list %}
+    {% if delivered_orders %}
+    <div class="cartt">
+    <div class="cartitems">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date and Time</th>
+                    <th>Items</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th>Shipping Details</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in delivered_orders %}
+                {% set total_price = namespace(sum=0) %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.date_created.strftime('%#d %b %Y %I.%M %p').replace('AM', 'am').replace('PM', 'pm') }}</td>
+                    <td>
+                        {% for item in order.items %}
+                            {% set item_total = (item.price | float) * item.quantity %}
+                            {% set total_price.sum = total_price.sum + item_total %}
+                            {{ item.flower.name }} × {{ item.quantity }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>{{ total_price.sum }} Tk</td>
+                    <td>{{ order.status }}</td>
+                    <td>
+                        <p>Phone: {{ order.phone }}</p>
+                        <p>Address: {{ order.address }}</p>
+                    </td>
+                    <td>
+                        {% if order.has_unreviewed %}
+                        
+                       <button class="lastrdiker_buttonsgula1"
+        onclick="window.location.href='{{ url_for('review_order', order_id=order.id) }}'">
+    Review
+</button>
+
+                        {% else %}
+                            Reviewed
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    {% else %}
+    <p>You have no delivered orders yet.</p>
+    {% endif %}
+   
+</div>
+{% endblock %}

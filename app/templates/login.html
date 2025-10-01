@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/loginfix.css')}}">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="loginpage">
+        <br> 
+        <div class="welcometext">W E L C O M E</div>
+        <form action="{{url_for('login')}}" method="post">
+            <div class="formm">
+
+				{% if invalid %}
+
+						<p class="subtext error" style="color:red;">
+							Incorrect Email or Password!
+						</p>
+
+				{% endif %}
+
+
+                <div class="username">
+                    <label for="email">Email:</label><br><br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="password">
+                    <label for="password">Password:</label><br><br>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="login"><button type="submit" class="loginbutton">Submit</button></div>
+            </div>
+        </form>
+        <div class="loginetc">
+            Don't have an account? Sign up   <a href="{{url_for('register')}}">here</a> <br> <br>
+        </div>
+    </div>
+</body>
+
+</html>

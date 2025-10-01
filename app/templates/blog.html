@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="indiblog">
+    <div class="indiblogtitle">{{ blog_post.title }}</div>
+    
+    {% if blog_post.image_url %}
+        <div class="indiblogimage">
+            <img src="{{ url_for('static', filename='uploads/' ~ blog_post.image_url) }}" alt="Blog Image">
+        </div>
+    {% endif %}
+    
+    <div class="indiblogtext">
+        {{ blog_post.blogtext }}
+    </div>
+</div>
+
+{% endblock %}

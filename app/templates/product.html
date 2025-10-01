@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="indivisual-main">
+    <div class="indivisual-main1">
+        <img src="{{ url_for('static', filename='Uploads/' + product.image_url) }}" alt="" class="indivisual-img">
+    </div>
+
+    <div class="indivisual-main2">
+        <div class="indivisual-actual">
+            <div class="indivisual-t">{{ product.name }}</div>
+            <div class="indivisual-p">{{ product.price }} Tk</div>
+            <div class="indivisual-s">
+                <div class="stars">
+                {% set rating = product.average_rating %}
+                {% for i in range(5) %}
+                    {% if rating >= i + 1 %}
+                        <i class="fa fa-star"></i>
+                    {% elif rating > i %}
+                        <i class="fa fa-star-half-o"></i>
+                    {% else %}
+                        <i class="fa fa-star-o"></i>
+                    {% endif %}
+                {% endfor %}
+                <span>{{ "%.1f" % rating }} ({{ product.review_count }} reviews)</span>
+            </div>
+            </div>
+            <div class="indivisual-d">{{ product.stock }} in stock</div>
+            <a href="#" class="indivisual-categories">{{ product.category }}</a>
+
+            <form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+                <div class="indivisual-increase">
+                    <button type="button" class="indivisual-b1" onclick="updateQuantity(1)">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <button class="indivisual-b2" id="qty-display" disabled>
+                        1
+                    </button>
+                    <button type="button" class="indivisual-b3" onclick="updateQuantity(-1)">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <input type="hidden" name="quantity" id="qty-input" value="1">
+                </div>
+
+                <div class="" style="margin-top: 10px;">
+                    <div class="whybtnnotsmall">
+                        <button type="submit" class="makebtnsmall">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="indivisual-d">
+                {{ product.details }}
+            </div>
+
+            <div class="indivisual-morebtns">
+                {% set ns = namespace(in_wishlist=False) %}
+                {% for item in current_user.wishlist_items %}
+                    {% if item.flower_id == product.id %}
+                        {% set ns.in_wishlist = True %}
+                    {% endif %}
+                {% endfor %}
+
+                <a href="{{ url_for('toggle_wishlist', flower_id=product.id) }}">
+                    <div class="indivisual-b4">
+                        <i class="fa fa-heart {{ 'wishlist-active' if ns.in_wishlist else '' }}"></i>
+                    </div>
+                </a>
+
+                <a href="{{ url_for('home') }}">
+                    <div class="indivisual-b4">
+                        <i class="fa fa-share"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="p-reviews">
+    <div class="reviewheadingdiv">
+        <p class="reviewheading" >Reviews</p>
+    </div>
+    {% if product.ratings %}
+        {% for rating in product.ratings %}
+            <div class="p-review">
+                <div class="reviewperson">
+                 <div class="l3rem">
+    <p>{{ rating.user.name }} | {{ rating.rating }} stars</p>
+</div>
+<div class="r3rem">
+    <p>{{ rating.date_created.strftime('%#d %b %Y') }}</p>
+</div>
+
+                </div>
+              <div class="actualreviewbyperson">
+                 <div class="actualactualreviewbyperson">
+                     <p>{{ rating.review_text or '' }}</p>
+                 </div>
+              </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No reviews yet.</p>
+    {% endif %}
+</div>
+
+<script>
+let quantity = 1;
+const maxQty = {{ product.stock }};
+function updateQuantity(change) {
+    quantity = Math.min(Math.max(1, quantity + change), maxQty);
+    document.getElementById('qty-display').innerText = quantity;
+    document.getElementById('qty-input').value = quantity;
+}
+</script>
+
+{% endblock %}

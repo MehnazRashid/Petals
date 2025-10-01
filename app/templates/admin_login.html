@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="loginpage">
+        <br> 
+        <div class="welcometext">Petals Admin</div>
+        <form action="{{url_for('admin_login')}}" method="post">
+            <div class="formm">
+
+    
+                <div class="username"> 
+                    <label for="username">Username:</label><br><br>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="password">
+                    <label for="password">Password:</label><br><br>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="login"><button type="submit" class="loginbutton">Login</button></div>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

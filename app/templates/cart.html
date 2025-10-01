@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="cart">
+    <p class="index-heading">Your Cart</p>
+    <div class="cartt">
+        <div class="cartitems">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Remove from cart</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set ns = namespace(grand_total=0) %}
+                    {% for item in cart_items %}
+                    {% set row_total = item.flower.price | int * item.quantity %}
+                    {% set ns.grand_total = ns.grand_total + row_total %}
+                    <tr>
+                        <td><img src="{{ url_for('static', filename='uploads/' + item.flower.image_url) }}" alt=""></td>
+                        <td>{{ item.flower.name }}</td>
+                        <td class="price">{{ item.flower.price }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('update_cart', cart_id=item.id) }}" style="display:inline;">
+                                <button type="submit" name="action" value="decrease">-</button>
+                                <span>{{ item.quantity }}</span>
+                                <button type="submit" name="action" value="increase">+</button>
+                            </form>
+                        
+                            
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ url_for('update_cart', cart_id=item.id) }}" style="display:inline;">
+                                <button type="submit" name="action" value="delete" class="btn btn-danger" onclick="return confirm('Remove this item from cart?')">
+                                    Remove
+                                </button>
+                            </form>
+                        </td>
+                        <td>{{ row_total }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">Your cart is empty.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  <div class="checkoutfix">
+      <div class="checkout">
+            <div class="total-price">Total Price:<span id="total-price">  {{ ns.grand_total }} </span> Tk</div>
+            <div class="fixx"><a href="{{ url_for('checkout') }}"><button>Checkout</button></a></div>
+        </div>
+  </div>
+</div>
+
+{% endblock %}

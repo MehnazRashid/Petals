@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="review_cart">
+    <p class="index-heading">Review Products</p>
+    {% if unreviewed_items %}
+        <div class="review_cartt">
+            <div class="review_cartitems">
+                <form method="POST">
+                    <table class="review_table">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Image</th>
+                                <th>Rating</th>
+                                <th>Review</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in unreviewed_items %}
+                                <tr>
+                                    <td>{{ item.flower.name }}</td>
+                                    <td><img src="{{ url_for('static', filename='Uploads/' + item.flower.image_url) }}" alt="{{ item.flower.name }}" class="review_image"></td>
+                                    <td>
+                                        <select name="rating_{{ item.flower_id }}" class="review_select" required>
+                                            <option value="">Select rating</option>
+                                            {% for i in range(1,6) %}
+                                                <option value="{{ i }}">{{ i }} stars</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <textarea name="review_{{ item.flower_id }}" class="review_textarea" placeholder="Write your review (optional)"></textarea>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                   <div class="submit_incenter">
+    <button type="submit" class="lastrdiker_buttonsgula">Submit</button>
+</div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p>There is nothing to review.</p>
+    {% endif %}
+</div>
+{% endblock %}

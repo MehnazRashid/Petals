@@ -1,0 +1,67 @@
+html,body{
+    height:100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    background-image: url('Login_img.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.loginpage{
+
+    background: rgba( 255, 255, 255, 0.15 );
+backdrop-filter: blur( 3px );
+-webkit-backdrop-filter: blur( 2px );
+box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    height: 480px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(16, 19, 17);
+    font-size: 16px;
+    font-weight: 400;
+   
+}
+.formm{
+    height: 380px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.welcometext{
+    margin-top: 15px;
+    letter-spacing: 2.5px;
+    font-size: 23px;
+    font-weight: 400;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+.loginbutton{
+    padding: 2px 65px;
+    background-color: white;
+    border: none;
+    font-family: 'Times New Roman',serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: black;
+    border-radius: 2px;
+}
+
+.loginbutton:hover{
+    cursor: pointer;
+}
+
+.loginetc a{
+     color: black;
+}

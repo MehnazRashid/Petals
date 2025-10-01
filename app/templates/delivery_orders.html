@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="delivery-dashboard">
+    <p class="index-heading">Shipped Orders Ready for Delivery</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+   <div class="deliveryy">
+     <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>User</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.user.username }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.date_created }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('delivery_update_order', order_id=order.id) }}">
+                        <button type="submit" class="lastrdiker_buttonsgula1" onclick="return confirm('Mark this order as Delivered?' )">Deliver</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">No shipped orders available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+   </div>
+<div class="submit_incenter">
+    <button class="lastrdiker_buttonsgula" 
+        style="font-family: 'Times New Roman', Times, serif;"
+        onclick="window.location.href='{{ url_for('delivery_logout') }}'">
+        Logout
+    </button>
+</div>
+
+</div>
+
+</div>
+{% endblock %}

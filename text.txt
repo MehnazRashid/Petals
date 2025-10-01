@@ -1,0 +1,9 @@
+
+mkdir app
+mkdir app/static
+mkdir app/templates
+mkdir app/static/css
+
+
+flask run --debug --reload
+

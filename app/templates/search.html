@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    {% if flowers|length == 0 %} 
+        <p class="index-heading">No Products Found</p>
+    {% elif category != 'all' %}    
+        <p class="index-heading">Showing search results for - {{ category|capitalize }}</p>
+    {% else %}
+        <p class="index-heading">Showing All Products</p>
+    {% endif %}
+
+    <div class="total-productcontainer">
+        {% for flower in flowers %}
+        <div class="total-product">
+            <div class="total-img" style="background-image: url('{{ url_for('static', filename='Uploads/' + flower.image_url) }}');" onclick="this.parentElement.querySelector('a').click()"></div>
+            <div class="total-text"><br>
+                <a href="{{ url_for('product', id=flower.id) }}" class="name">{{ flower.name }}</a>
+                <h3>{{ flower.price }} Tk</h3><br>
+                <div class="products_star">
+<div class="stars">
+                    {% set rating = flower.average_rating %}
+                    {% for i in range(5) %}
+                        {% if rating >= i + 1 %}
+                            <i class="fa fa-star"></i>
+                        {% elif rating > i %}
+                            <i class="fa fa-star-half-o"></i>
+                        {% else %}
+                            <i class="fa fa-star-o"></i>
+                        {% endif %}
+                    {% endfor %}
+                    <span>{{ "%.1f" % rating }} ({{ flower.review_count }} reviews)</span>
+                </div>
+                </div>
+                
+                <center>
+                    <form method="POST" action="{{ url_for('add_to_cart', product_id=flower.id) }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="total-btn">
+                            Add to cart <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </form>
+                </center>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br><br>
+
+{% endblock %}

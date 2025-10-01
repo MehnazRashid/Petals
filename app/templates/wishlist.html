@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="cart">
+  <p class="index-heading">Your Wishlist</p>
+  <div class="cartt">
+      <div class="cartitems">
+          <table>
+              <thead>
+                  <tr>
+                      <th>Image</th>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Remove</th>
+                      <th>Add to Cart</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for product in products %}
+                <tr>
+                    <td><img src="{{ url_for('static', filename='uploads/' + product.image_url) }}" alt=""></td>
+                    <td>{{ product.name }}</td>
+                    <td class="price">{{ product.price }}</td>
+                    <td>
+                        <a href="{{ url_for('toggle_wishlist', flower_id=product.id) }}">
+                            <button class="btn btn-danger">Remove</button>
+                        </a>
+                    </td>
+                     <td>
+    <form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="btn btn-success">Add</button>
+    </form>
+</td>
+
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">Your wishlist is empty.</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}

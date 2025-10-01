@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 10px;
+}
+
+.specific.nav {
+    width: 100vw;
+    height: 12vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5rem;
+}
+
+.specific.nav1 {
+    width: 10vw;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    font-size: 2rem;
+    font-family: "GFS Didot", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    font-weight: bold;
+}
+
+.specific.nav1 span{
+    width: 100%;
+    background: linear-gradient(180deg, #BCD0E5 30%, #C0C0C0 70%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.specific.nav2 {
+    width: 90vw;
+    height: 10vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.specific.nav21 {
+    width: 90vw;
+    height: 5vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.specific.nav22 {
+    width: 90vw;
+    height: 5vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.specific.nav221 {
+    width: 60vw;
+    height: 5vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.specific.nav222 {
+    width: 30vw;
+    height: 5vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.specific.item1 {
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.specific.item2 {
+    padding-left: 0.1vw;
+    padding-right: 0.1vw;
+    
+}
+
+.specific button {
+    background-color: transparent;
+    border: 1px transparent;
+    font-size: 1.2rem;
+}
+
+.specific #btnfix {
+    height: 2.2rem;
+    width: 8vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: 0.2rem solid #f5f5f5;
+    font-size: 1.3rem;
+    /*ekhane nav r font*/
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.specific #btnfix:hover {
+    height: 2.2rem;
+    width: 8vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: 0.2rem solid #dbe9f4;
+}
+
+.specific .item1 {
+    font-size: 1rem;
+}
+
+.specific a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: black;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.specific a:hover {
+    text-decoration: underline;
+    font-size: 1.3rem;
+    color: black;
+}
+
+.specific .item2 {
+    font-size: 1rem;
+}
+
+.specific .fix {
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 3px;
+    width: 10vw;
+}
+
+.specific .item2 button:hover {
+    border: 2px solid black;
+}
+
+.specific .item2 button {
+    border: 2px solid white;
+}
+
+.specific .item2 input,
+.specific .item2 button {
+    height: 2.5rem; 
+}
+
+.specific button:focus, 
+.specific button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
