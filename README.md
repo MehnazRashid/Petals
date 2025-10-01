@@ -2,7 +2,6 @@
 
 **Petals** is a simple e-commerce web application where customers can buy flowers online. Users can browse different flowers, add them to wishlist or cart, place orders, and read blogs about flowers and floral care. Admins can manage products, orders, blogs, and messages from customers.  
 
----
 
 ## Features  
 
@@ -18,7 +17,7 @@
 - Admin panel to manage products, orders, blogs, and users  
 - Delivery panel for order updates  
 
----
+
 
 ## Tech Stack  
 
@@ -42,17 +41,16 @@
 **Database:**  
 - SQLite (lightweight relational database)  
 
----
 
 ## Project Structure  
-Petals/
-├── static/      # CSS, images, uploads, JS
-├── templates/   # HTML files (Jinja2 templates)
-├── models.py    # Database models
-├── routes.py    # Backend routes & logic
-└── __init__.py  # App initialization
 
----
+- `Petals/`
+  - `static/` – CSS, images, uploads, JS
+  - `templates/` – HTML files (Jinja2 templates)
+  - `models.py` – Database models
+  - `routes.py` – Backend routes & logic
+  - `__init__.py` – App initialization
+
 
 ## Accessing Admin & Delivery Panel  
 
@@ -68,7 +66,6 @@ Petals/
   - **Username:** `delivery`  
   - **Password:** `deliverypass`  
 
----
 
 ### Future Improvements 
 - Implement online payment methods
