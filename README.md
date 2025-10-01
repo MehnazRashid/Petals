@@ -44,7 +44,7 @@
 
 ## Project Structure  
 
-- `Petals/`
+ `Petals/`
   - `static/` – CSS, images, uploads, JS
   - `templates/` – HTML files (Jinja2 templates)
   - `models.py` – Database models
